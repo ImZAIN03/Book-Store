@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 // mongodb
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = "mongodb+srv://zain:zain@book-store-mern.huyvfnw.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -36,13 +36,55 @@ async function run() {
     await client.connect();
 
     // create collection of documents
-    const booksCollections = client.db("BookInventory").collection("books");
+    const bookCollections = client.db("BookInventory").collection("books");
 
     // insert book to db: post method
-
     app.post("/upload-book", async(req,res) => {
       const data = req.body;
-      const result = await booksCollections.insertOne(data);
+      const result = await bookCollections.insertOne(data);
+      res.send(result);
+    })
+
+    // get all books from database
+    // app.get("/all-books", async(req,res) => {
+    //   const books = bookCollections.find();
+    //   const result = await books.toArray();
+    //   res.send(result);  
+    // })
+    
+    // update a book : patch or update method
+    app.patch("/book/:id", async (req,res) => {
+      const id = req.params.id;
+      // console.log(id);
+      const updateBookData = req.body;
+      const filter = {_id: new ObjectId(id)}
+      const options = { upsert: true };
+      
+      const updateDoc = {
+        $set: {
+          ...updateBookData
+        }
+      }
+      // update 
+      const result = await bookCollections.updateOne( filter, updateDoc, options );
+      res.send(result); 
+    })
+
+    // delete a book
+    app.delete("/book/:id", async(req,res) => {
+      const id = req.params.id;
+      const filter = {_id: new ObjectId(id)}
+      const result = await bookCollections.deleteOne(filter)
+      res.send(result);
+    })
+
+    // find by category
+    app.get("/all-books", async (req,res)=>{
+      let query = {};
+      if(req.query?.category){
+        query = {category: req.query.category}
+      }
+      const result = await bookCollections.find(query).toArray();
       res.send(result);
     })
 
