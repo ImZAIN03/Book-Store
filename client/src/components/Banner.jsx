@@ -11,7 +11,7 @@ const Banner = () => {
             <p className='md:w-4/5'>Welcome to our website, where pages come to life and stories unfold! Explore the enchanting world of books at our bookstore, where every shelf beckons with tales of adventure, romance, mystery, and knowledge.</p>
             {/* right side */}
                 <div>
-                    <input type='search' name='search' id='search' placeholder='Search a Book' className='mt-2 px-2 py-2 rounded-s-sm outline-none rounded-md'/>
+                    <input type='search' name='search' id='search' placeholder='Search a Book' className='mt-2 px-2 py-2 outline-none rounded-md border-2 border-gray-800'/>
                     <button className='bg-gray-600 px-6 py-2 text-white font-medium hover:bg-black transition-all ease-in duration-200 mx-2 rounded-md'>Search</button>
                 </div>
             </div>
