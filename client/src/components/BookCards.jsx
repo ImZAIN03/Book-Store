@@ -15,7 +15,7 @@ import { Pagination } from 'swiper/modules';
 import { FaCartShopping } from 'react-icons/fa6'
 
 const BookCards = ({headline, books}) => {
-  console.log(books);
+  // console.log(books);
 
   return (
     <div className='my-10 px-4 lg:px-2'>
@@ -50,7 +50,7 @@ const BookCards = ({headline, books}) => {
           books.map(book => <SwiperSlide key={book._id}>
             <Link to={`/book/${book._id}`}>
               <div className='relative'>
-                <img src={book.imageURL} alt=''/>
+                <img src={book.imageURL} alt='' className='w-96 h-96 object-fill'/>
                 <div className='absolute top-3 right-3  bg-yellow-100 hover:bg-slate-400 p-2 rounded'>
                   <FaCartShopping className='w-4'/>
                 </div>
