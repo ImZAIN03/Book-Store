@@ -15,20 +15,16 @@ const Navbar = () => {
 
     useEffect(() => {
       const handleScroll = () => {
-        if(window.scrollY > 100){
-          setIsSticky(true);
-        }
-        else{
-          setIsSticky(false);
-        }
-      }
-
+        setIsSticky(window.scrollY > 100);
+      };
+    
       window.addEventListener("scroll", handleScroll);
-
+    
       return () => {
-        window.addEventListener("scroll", handleScroll);
-      }
-    }, [])
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
+    
 
     // nav items
     const navItems = [
@@ -39,7 +35,7 @@ const Navbar = () => {
       {link: "Blog", path: "/blog"},
     ]    
   return (
-    <header className='w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300'>
+    <header className='w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300 z-50'>
       <nav className={`py-4 lg:px-24 px-4 ${isSticky ? "sticky top-0 left-0 right-0 bg-sky-200" : ""}`}>
         <div className='flex justify-between items-center text-base gap-8'>
           {/* log */}

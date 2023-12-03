@@ -8,7 +8,7 @@ const Banner = () => {
             {/* left side */}
             <div className='md:w-1/2 space-y-8 h-full'>
             <h2 className='text-3xl md:text-5xl font-bold leading-snug text-black '>Buy And Sell Your Books <br/><span className='text-sky-800'>For the Best Price</span> </h2>
-            <p className='md:w-4/5'>Welcome to our website, where pages come to life and stories unfold! Explore the enchanting world of books at our bookstore, where every shelf beckons with tales of adventure, romance, mystery, and knowledge.</p>
+            <p className='md:w-4/5 font-semibold text-md'>Welcome to our website, where pages come to life and stories unfold! Explore the enchanting world of books at our bookstore, where every shelf beckons with tales of adventure, romance, mystery, and knowledge.</p>
             {/* right side */}
                 <div>
                     <input type='search' name='search' id='search' placeholder='Search a Book' className='mt-2 px-2 py-2 outline-none rounded-md border-2 border-gray-800'/>
