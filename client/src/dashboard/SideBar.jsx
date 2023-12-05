@@ -42,7 +42,7 @@ const SideBar = () => {
             Log Out
           </Sidebar.Item>
         </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup className="mt-4 lg:mt-0"> {/* Adjust spacing on small devices */}
+        <Sidebar.ItemGroup className="mt-1 lg:mt-0">
           <Sidebar.Item href="#" icon={HiChartPie}>
             Upgrade to Pro
           </Sidebar.Item>
