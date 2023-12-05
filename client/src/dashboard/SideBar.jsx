@@ -14,11 +14,11 @@ import userImg from "../assets/awardbooks.png";
 
 const SideBar = () => {
   return (
-    <Sidebar aria-label="Sidebar with content separator example">
-      <Sidebar.Logo href="#" img={userImg} imgAlt="Books logo">
+    <Sidebar aria-label="Sidebar with content separator example" className="lg:w-64 lg:flex-shrink-0">
+      <Sidebar.Logo href="/" img={userImg} imgAlt="Books logo">
         Books
       </Sidebar.Logo>
-      <Sidebar.Items>
+      <Sidebar.Items className="mt-4">
         <Sidebar.ItemGroup>
           <Sidebar.Item href="/admin/dashboard" icon={HiChartPie}>
             Dashboard
@@ -42,7 +42,7 @@ const SideBar = () => {
             Log Out
           </Sidebar.Item>
         </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup>
+        <Sidebar.ItemGroup className="mt-4 lg:mt-0"> {/* Adjust spacing on small devices */}
           <Sidebar.Item href="#" icon={HiChartPie}>
             Upgrade to Pro
           </Sidebar.Item>
