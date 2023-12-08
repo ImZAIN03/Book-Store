@@ -1,6 +1,6 @@
-import React, { Children, createContext, useState } from 'react'
+import React, { Children, createContext, useEffect, useState } from 'react'
 import app from '../firebase/firebase.config';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -19,7 +19,20 @@ const AuthProvider = ({children}) => {
     //     signUpWithGmail
     // }
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            // console.log(currentUser);
+            setUser(currentUser);
+            setLoading(false);
+        });
+        return () => {
+            return unsubscribe();
+
+        }
+    },[])
+
     const authInfo = {
+        user,
         createUser
     }
     return (
